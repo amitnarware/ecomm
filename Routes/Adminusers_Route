@@ -1,0 +1,17 @@
+const express = require('express');
+const Adminusers_Router = express.Router();
+
+
+const {postusers,getusers,getusersname,putusers} = require('../controllers/Tb_Adminusers');
+
+Adminusers_Router.post('/api/admin/userregister',postusers,(req, res) => {});
+Adminusers_Router.get('/api/admin/userlist',getusers);
+Adminusers_Router.get('/api/admin/userfind', getusersname);
+Adminusers_Router.put('/api/admin/userupdate/:uid',putusers) 
+
+
+  
+
+
+
+module.exports = {Adminusers_Router};
