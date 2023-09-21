@@ -6,7 +6,7 @@ const {postusers,getusers,getusersname,putusers} = require('../controllers/Tb_Ad
 
 Adminusers_Router.post('/api/admin/userregister',postusers,(req, res) => {});
 Adminusers_Router.get('/api/admin/userlist',getusers);
-Adminusers_Router.get('/api/admin/userfind', getusersname);
+Adminusers_Router.get('/api/admin/userfind/:name', getusersname);
 Adminusers_Router.put('/api/admin/userupdate/:uid',putusers) 
 
 
