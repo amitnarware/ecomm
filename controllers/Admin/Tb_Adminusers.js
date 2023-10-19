@@ -1,4 +1,4 @@
-let {connection} = require('../models/dbconfig')
+let {connection} = require('../../models/dbconfig')
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -163,5 +163,25 @@ let getusers = function(req, res){
       }
     });
   };
+
+ let putstatus = function (req, res) {
+  //  '/api/admin/statuschange/:uid
+    const uid = req.params.uid;
+    const newStatus = req.body.status; // Assuming you're sending the new status in the request body
   
-module.exports = {postusers,getusers,getusersname,putusers}
+    // Execute a SQL query to update the user's status
+    const sql = `UPDATE admin_users SET status = ? WHERE uid = ?`;
+  
+    db.query(sql, [newStatus, uid], (err, result) => {
+      if (err) {
+        console.error('Error updating status: ' + err.message);
+        res.status(500).send('Error updating status');
+      } else {
+        res.status(200).json({ message: 'Status updated successfully' });
+      }
+    });
+  };
+
+  
+  
+module.exports = {postusers,getusers,getusersname,putusers,putstatus}
